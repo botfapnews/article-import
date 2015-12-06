@@ -1,6 +1,20 @@
 <?php
 
-require_once dirname(__FILE__) . '/newscoop_bootstrap.php';
+set_time_limit(0);
+
+global $g_ado_db;
+
+require_once __DIR__ . '/../constants.php';
+require_once __DIR__ . '/bootstrap.php.cache';
+require_once __DIR__ . '/AppKernel.php';
+
+$env = 'prod';
+$debug = false;
+
+$kernel = new AppKernel($env, $debug);
+$kernel->boot();
+$container = $kernel->getContainer();
+\Zend_Registry::set('container', $container);
 
 // Article definition
 
